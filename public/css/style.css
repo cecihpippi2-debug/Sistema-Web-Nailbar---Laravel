@@ -439,6 +439,40 @@ textarea.form-control {
     font-style: italic;
 }
 
+/* ================= BARRA DE PESQUISA ================= */
+
+/* Container da barra de pesquisa */
+.search-bar {
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Conteúdo da barra (input + botão) */
+.search-bar-content {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+/* Input de pesquisa */
+.search-input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+/* Botão de pesquisa */
+.search-bar-content .btn-primary {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 12px 20px;
+    white-space: nowrap;
+}
+
 /* ================= BOTÃO FLUTUANTE (FAB) ================= */
 
 /* FAB no canto inferior direito */
@@ -471,4 +505,15 @@ textarea.form-control {
 .fab-button:active {
     transform: scale(0.95);
 }
+
+/* ================= CADASTRO CLIENTES ================= */
+.divisor{
+    margin: 30px 0;
+    border: none;
+    height: 2px;
+    background-color: #D88C9A;
+    opacity: 0.4;
+}
+
+
 

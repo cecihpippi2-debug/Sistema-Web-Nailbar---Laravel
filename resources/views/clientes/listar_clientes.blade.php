@@ -10,6 +10,15 @@
                         <h3>Clientes</h3>
                     </div>
                     <div class="card-body">
+                        <!-- Barra de Pesquisa -->
+                        <div class="search-bar mb-4">
+                            <div class="search-bar-content">
+                                <input type="text" class="form-control search-input" name="valor" placeholder="Pesquisar cliente...">
+                                <button type="submit" class="btn btn-primary">Buscar</button>
+                            </div>
+                        </div>
+
+                        <!-- Tabela de Clientes -->
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -54,7 +63,7 @@
 </section>
 
 <!-- FAB -->
-<a href="{{ route('clientes.criar') }}" class="fab-button" title="Novo Cliente">
+<a href="{{ url('/clientes/criar') }}" class="fab-button" title="Novo Cliente">
     <span>+</span>
 </a>
 

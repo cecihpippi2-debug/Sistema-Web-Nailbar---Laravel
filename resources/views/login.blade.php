@@ -25,6 +25,8 @@
                     <input type="password" class="form-control" name="senha" placeholder="Digite sua senha">
                 </div>
 
+                <hr class="divisor">
+
                 <div class="login-buttons">
                     <button type="submit" class="btn-primary">Entrar</button>
                 </div>
@@ -33,7 +35,7 @@
 
         <div class="register-area">
             <p>Ainda não tem conta?</p>
-            <a href="#" class="btn-secondary">Criar conta</a>
+            <a href="{{ url('/clientes/criar') }}" class="btn-secondary">Criar conta</a>
         </div>
 
     </div>

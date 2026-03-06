@@ -44,6 +44,8 @@
                     <input type="text" class="form-control" name="observacoes" placeholder="Digite suas observações">
                 </div>
 
+                <hr class="divisor">
+
                 <div class="login-buttons">
                     <button type="submit" class="btn-primary">Cadastrar</button>
                 </div>
