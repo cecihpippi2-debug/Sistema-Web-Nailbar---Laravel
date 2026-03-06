@@ -216,16 +216,26 @@ button {
     justify-content: center;
 }
 
+/* Bootstrap button class */
+.btn {
+    text-decoration: none;
+    display: inline-block;
+}
+
 .btn-primary {
-    width: 70%;
-    padding: 14px;
+    padding: 16.8px 33.6px;
     border-radius: 25px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     border: none;
     cursor: pointer;
     background-color: #D88C9A;
     color: white;
+}
+
+/* Botão primário no login  */
+.login-buttons .btn-primary {
+    width: 70%;
 }
 
 /* ================= ÁREA DE CADASTRO ================= */

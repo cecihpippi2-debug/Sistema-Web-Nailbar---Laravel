@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-
+//======= HOME =======
 Route::get('/', function () {
     return view('home');
 }) ->name('home');
 
+
+//======= Sem uso =======
 Route::get('/montar', function () {
     return view('montar');
 })->name('montar');
@@ -15,11 +17,14 @@ Route::get('/agendar', function(){
     return view('agendar');
 })->name('agendar');
 
+
+//======= Login =======
 Route::get('/login', function(){
     return view('login');
 })->name('login');
 
-// Rotas de Clientes
+
+//======= Clientes =======
 Route::get('/clientes', function(){
     return view('clientes.listar_clientes');
 })->name('clientes.index');

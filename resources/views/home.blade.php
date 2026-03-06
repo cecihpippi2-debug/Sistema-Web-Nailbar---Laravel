@@ -4,7 +4,7 @@
 
 <section class="hero">
     <h2>Crie sua arte. Agende seu momento</h2>
-    <button>Começar agora</button>
+    <a href="{{ url('/login') }}" class="btn btn-primary" style="width: fit-content;">Começar agora</a>
 </section>
 
 <section class="about">
