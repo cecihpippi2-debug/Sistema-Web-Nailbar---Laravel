@@ -1,62 +1,71 @@
 @extends('layouts.app')
 
 @section('conteudo')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mx-auto">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Detalhes do Cliente</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <h5>Nome</h5>
-                            <p>{{ $cliente->nome }}</p>
-                        </div>
-                        <div class="col-md-6">
-                            <h5>Email</h5>
-                            <p>{{ $cliente->email }}</p>
-                        </div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" style="text-align: center;">
+                        <h3>Detalhes da Cliente</h3>
                     </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <h5>Telefone</h5>
-                            <p>{{ $cliente->telefone }}</p>
+                    <div class="card-body">
+                        
+                        <!-- Informações em Colunas -->
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <label class="client-details-label">Nome</label>
+                                <p class="client-details-value">{{ $cliente->nome }}</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="client-details-label">Data de Nascimento</label>
+                                <p class="client-details-value">{{ $cliente->data_nascimento}}</p>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <h5>Endereço</h5>
-                            <p>{{ $cliente->endereco ?? 'Não informado' }}</p>
-                        </div>
-                    </div>
 
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <h5>Observações</h5>
-                            <p>{{ $cliente->observacoes ?? 'Nenhuma observação' }}</p>
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <label class="client-details-label">Email</label>
+                                <p class="client-details-value">{{ $cliente->email }}</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="client-details-label">Telefone</label>
+                                <p class="client-details-value">{{ $cliente->telefone ?? 'Não informado' }}</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <h5>Data de Cadastro</h5>
-                            <p>{{ $cliente->created_at?->format('d/m/Y H:i') }}</p>
+                        <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <label class="client-details-label">Endereço</label>
+                                <p class="client-details-value">{{ $cliente->endereco ?? 'Não informado' }}</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="client-details-label">Data de Cadastro</label>
+                                <p class="client-details-value">{{ $cliente->created_at?->format('d/m/Y H:i') }}</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="d-flex gap-2">
-                        <a href="{{ route('clientes.editar', $cliente->id) }}" class="btn btn-warning">Editar</a>
-                        <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Voltar</a>
-                        <form action="{{ route('clientes.deletar', $cliente->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza?')">Deletar</button>
-                        </form>
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <label class="client-details-label">Observações</label>
+                                <p class="client-details-value">{{ $cliente->observacoes ?? 'Nenhuma observação' }}</p>
+                            </div>
+                        </div>
+
+                        <!-- Botões de Ações -->
+                        <div class="d-flex gap-2 mt-4">
+                            <a href="{{ route('clientes.index') }}" class="btn-action btn-action-voltar">Voltar</a>
+                            <a href="{{ route('clientes.editar', $cliente->id) }}" class="btn-action btn-action-editar">Editar</a>
+                            <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-action btn-action-deletar" onclick="return confirm('Tem certeza?')">Deletar</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection

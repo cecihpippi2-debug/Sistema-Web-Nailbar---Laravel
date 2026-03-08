@@ -10,12 +10,29 @@
                         <h3>Clientes</h3>
                     </div>
                     <div class="card-body">
+                        @if(session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        @endif
+
                         <!-- Barra de Pesquisa -->
                         <div class="search-bar mb-4">
-                            <div class="search-bar-content">
-                                <input type="text" class="form-control search-input" name="valor" placeholder="Pesquisar cliente...">
-                                <button type="submit" class="btn btn-primary">Buscar</button>
-                            </div>
+                            <form method="POST" action="{{ route('clientes.search') }}">
+                                @csrf
+                                <div class="search-bar-content">
+                                    <select class="form-control" name="tipo" required>
+                                        <option value="nome">--</option>
+                                        <option value="nome">Nome</option>
+                                        <option value="email">Email</option>
+                                        <option value="telefone">Telefone</option>
+                                    </select>
+                                    <input type="text" class="form-control search-input" name="valor" placeholder="Pesquisar cliente..." required>
+                                    <button type="submit" class="btn btn-primary">Buscar</button>
+                                    <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Limpar</a>
+                                </div>
+                            </form>
                         </div>
 
                         <!-- Tabela de Clientes -->
@@ -30,28 +47,23 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($clientes as $cliente)
                                 <tr>
-                                    <td>1</td>
-                                    <td>João Silva</td>
-                                    <td>joao@example.com</td>
-                                    <td>(11) 98765-4321</td>
+                                    <th scope='row'>{{ $cliente->id}}</th>
+                                    <td>{{ $cliente->nome }}</td>
+                                    <td>{{ $cliente->email }}</td>
+                                    <td>{{ $cliente->telefone }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-info">Ver</a>
-                                        <a href="#" class="btn btn-sm btn-warning">Editar</a>
-                                        <button class="btn btn-sm btn-danger">Deletar</button>
+                                        <a href="{{ route('clientes.exibir', $cliente->id) }}" class="btn btn-sm btn-info">Ver</a>
+                                        <a href="{{ route('clientes.editar', $cliente->id) }}" class="btn btn-sm btn-warning">Editar</a>
+                                        <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza?')">Deletar</button>
+                                        </form>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Maria Santos</td>
-                                    <td>maria@example.com</td>
-                                    <td>(11) 99876-5432</td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-info">Ver</a>
-                                        <a href="#" class="btn btn-sm btn-warning">Editar</a>
-                                        <button class="btn btn-sm btn-danger">Deletar</button>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -63,7 +75,7 @@
 </section>
 
 <!-- FAB -->
-<a href="{{ url('/clientes/criar') }}" class="fab-button" title="Novo Cliente">
+<a href="{{ route('clientes.criar') }}" class="fab-button" title="Novo Cliente">
     <span>+</span>
 </a>
 

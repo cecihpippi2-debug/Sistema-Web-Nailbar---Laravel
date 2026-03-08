@@ -1,6 +1,8 @@
 /* ============================================================================
-   CUSTOMIZAÇÃO DAS CORES DO BOOTSTRAP
+   CONFIGURAÇÃO GLOBAL
    ============================================================================ */
+
+/* Customização das cores do Bootstrap */
 :root {
     --bs-primary: #D88C9A;           /* Rosa (botões principais) */
     --bs-secondary: #F6E7A1;         /* Amarelo (botões secundários) */
@@ -15,6 +17,7 @@
     --bs-font-sans-serif: 'Fredoka', sans-serif;
 }
 
+/* Estilos do corpo geral */
 body {
     margin: 0;
     font-family: 'Fredoka', sans-serif;
@@ -28,10 +31,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 }
 
+/* Header navegação */
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 26px 52px; /* +30% */
+    padding: 26px 52px;
     background-color: #F6E7A1;
     border-bottom-left-radius: 52px;
     border-bottom-right-radius: 52px;
@@ -42,23 +46,42 @@ nav a {
     text-decoration: none;
     color: #5C3A3A;
     font-weight: 600;
-    font-size: 1.5  rem;
+    font-size: 1.5rem;
 }
 
-.hero {
+/* Footer */
+.footer {
     text-align: center;
-    padding: 130px 26px;
-    background-color: #F5D0D6;
-    border-radius: 78px;
-    margin: 52px auto;
-    font-size:1.2em;
-    min-height: 500px;
+    padding: 26px;
+}
+
+/* Utilitários globais */
+.d-flex {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 1400px;
-    width: 100%;
+}
+
+.gap-2 {
+    gap: 15px;
+}
+
+.mb-3 {
+    margin-bottom: 20px;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-muted {
+    color: #999;
+    font-style: italic;
+}
+
+/* Bootstrap button class */
+.btn {
+    text-decoration: none;
+    display: inline-block;
 }
 
 button {
@@ -71,193 +94,7 @@ button {
     cursor: pointer;
 }
 
-.footer {
-    text-align: center;
-    padding: 26px;
-}
-.about {
-    margin: 80px auto;
-    padding: 0;
-    font-size: 1.2em;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-.about-container {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    background-color: #F5D0D6;
-    padding: 60px 40px;
-    border-radius: 60px;
-    max-width: 1400px;
-    width: 100%;
-}
-
-.about-text {
-    flex: 1;
-}
-
-.about-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;   
-    align-items: center;       
-}
-
-.about-image img {
-    width: 350px;        
-    height: 400px;       
-    object-fit: cover;   
-    border-radius: 40px; 
-}
-
-.video-section {
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: #F6E7A1; /* amarelo manteiga */
-    padding: 100px 0;
-}
-
-.video-content {
-    max-width: 1400px;
-    width: 100%;
-    padding: 0 40px;
-    text-align: center;
-}
-
-.video-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-}
-
-.video-placeholder {
-    width: 800px;
-    height: 450px;
-    margin: 0 auto;
-    background-color: #FFF8E7;
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-}
-
-/* ================= LOGIN SECTION ================= */
-
-/* Container Principal */
-.login-section {
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #FFF8E7;
-    margin-top: 60px; /* mesmo espaçamento do hero */
-}
-
-.login-card {
-    background-color: #F5D0D6;
-    padding: 60px;
-    padding-top: 60px;
-    border-radius: 50px;
-    width: 520px;
-}
-
-/* Título */
-.login-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.login-header h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-/* Subtítulo */
-.login-subtitle {
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-/* Formulário    */
-.login-form form {
-    width: 100%;
-}
-
-/* Inputs */
-.input-group {
-    margin-bottom: 25px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 14px;
-    border-radius: 25px;
-    border: none;
-}
-
-/* ================= BOTÕES LOGIN ================= */
-
-.login-buttons {
-    display: flex;
-    justify-content: center;
-}
-
-/* Bootstrap button class */
-.btn {
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-primary {
-    padding: 16.8px 33.6px;
-    border-radius: 25px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    background-color: #D88C9A;
-    color: white;
-}
-
-/* Botão primário no login  */
-.login-buttons .btn-primary {
-    width: 70%;
-}
-
-/* ================= ÁREA DE CADASTRO ================= */
-.register-area {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.btn-secondary {
-    display: inline-block;
-    padding: 12px 28px;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    background-color: #F6E7A1;
-    color: #5C3A3A;
-}
-
-/* ================= ESTILOS PARA CLIENTES ================= */
-
-/* Container principal com espaçamento */
+/* Grid layout */
 .container {
     max-width: 1200px;
     margin: 40px auto;
@@ -307,82 +144,7 @@ button {
     padding: 30px;
 }
 
-/* Tabelas para listagem de dados */
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.table thead {
-    background-color: transparent;
-}
-
-.table thead th {
-    padding: 15px;
-    text-align: left;
-    font-weight: 600;
-    color: #5C3A3A;
-}
-
-.table tbody tr {
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.table tbody tr:hover {
-    background-color: #f9f9f9;
-}
-
-.table tbody td {
-    padding: 15px;
-    color: #5C3A3A;
-}
-
-.table-striped tbody tr:nth-child(odd) {
-    background-color: rgba(245, 208, 214, 0.2);
-}
-
-/* Botões adicionais com estilos da paleta do projeto */
-.btn-sm {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    font-weight: 600;
-}
-
-.btn-info {
-    background-color: #2196F3;
-    color: white;
-}
-
-.btn-info:hover {
-    background-color: #0b7dda;
-}
-
-.btn-warning {
-    background-color: #FF9800;
-    color: white;
-}
-
-.btn-warning:hover {
-    background-color: #f89c64;
-}
-
-.btn-danger {
-    background-color: #F44336;
-    color: white;
-}
-
-.btn-danger:hover {
-    background-color: #da1e1e;
-}
-
-/* Formulários */
+/* Formulários globais */
 .form-group {
     margin-bottom: 20px;
 }
@@ -425,67 +187,447 @@ textarea.form-control {
     min-height: 120px;
 }
 
-/* Flexbox utilitários */
-.d-flex {
+
+/* ============================================================================
+   HOME PAGE
+   ============================================================================ */
+
+.hero {
+    text-align: center;
+    padding: 130px 26px;
+    background-color: #F5D0D6;
+    border-radius: 78px;
+    margin: 52px auto;
+    font-size: 1.2em;
+    min-height: 500px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1400px;
+    width: 100%;
 }
 
-.gap-2 {
-    gap: 15px;
+.about {
+    margin: 80px auto;
+    padding: 0;
+    font-size: 1.2em;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
-.mb-3 {
-    margin-bottom: 20px;
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    background-color: #F5D0D6;
+    padding: 60px 40px;
+    border-radius: 60px;
+    max-width: 1400px;
+    width: 100%;
 }
 
-.mx-auto {
-    margin-left: auto;
-    margin-right: auto;
+.about-text {
+    flex: 1;
 }
 
-/* Textos utilitários */
-.text-muted {
-    color: #999;
-    font-style: italic;
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* ================= BARRA DE PESQUISA ================= */
+.about-image img {
+    width: 350px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 40px;
+}
 
-/* Container da barra de pesquisa */
+.video-section {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #F6E7A1;
+    padding: 100px 0;
+}
+
+.video-content {
+    max-width: 1400px;
+    width: 100%;
+    padding: 0 40px;
+    text-align: center;
+}
+
+.video-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.video-placeholder {
+    width: 800px;
+    height: 450px;
+    margin: 0 auto;
+    background-color: #FFF8E7;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+
+/* ============================================================================
+   LOGIN PAGE
+   ============================================================================ */
+
+/* Container Principal */
+.login-section {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF8E7;
+    margin-top: 60px;
+}
+
+.login-card {
+    background-color: #F5D0D6;
+    padding: 60px;
+    padding-top: 60px;
+    border-radius: 50px;
+    width: 520px;
+}
+
+/* Título */
+.login-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.login-header h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Subtítulo */
+.login-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Formulário */
+.login-form form {
+    width: 100%;
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 25px;
+    border: none;
+}
+
+/* Botões */
+.login-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-primary {
+    padding: 16.8px 33.6px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    background-color: #D88C9A;
+    color: white;
+}
+
+.login-buttons .btn-primary {
+    width: 70%;
+}
+
+/* Área de Cadastro */
+.register-area {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: #F6E7A1;
+    color: #5C3A3A;
+}
+
+
+/* ============================================================================
+   CRIAR (CADASTRO) PAGE
+   ============================================================================ */
+
+.divisor {
+    margin: 30px 0;
+    border: none;
+    height: 2px;
+    background-color: #D88C9A;
+    opacity: 0.4;
+}
+
+
+/* ============================================================================
+   LISTAR PAGE
+   ============================================================================ */
+
+/* Tabelas para listagem de dados */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table thead {
+    background-color: transparent;
+}
+
+.table thead th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #5C3A3A;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.table tbody td {
+    padding: 15px;
+    color: #5C3A3A;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: rgba(245, 208, 214, 0.2);
+}
+
+/* Botões pequenos para tabela */
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-weight: 600;
+}
+
+.btn-info {
+    background-color: #2196F3;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #0b7dda;
+}
+
+.btn-warning {
+    background-color: #FF9800;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #f89c64;
+}
+
+.btn-danger {
+    background-color: #F44336;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #da1e1e;
+}
+
+/* Barra de Pesquisa */
 .search-bar {
     padding: 15px;
     border-radius: 12px;
     border: 1px solid #e0e0e0;
 }
 
-/* Conteúdo da barra (input + botão) */
 .search-bar-content {
     display: flex;
     gap: 10px;
-    align-items: flex-end;
+    align-items: center;
 }
 
-/* Input de pesquisa */
-.search-input {
-    flex: 1;
-    min-width: 200px;
+/* Select e Input de pesquisa */
+.search-bar-content select,
+.search-bar-content .search-input {
+    flex-grow: 1;
+    min-width: 150px;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-family: 'Fredoka', sans-serif;
+    background-color: white;
+    color: #5C3A3A;
+    height: 44px;
 }
 
-.search-input::placeholder {
-    color: #999;
+/* Remove autocomplete padrão do navegador */
+.search-bar-content select:-webkit-autofill,
+.search-bar-content .search-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #5C3A3A !important;
 }
 
-/* Botão de pesquisa */
-.search-bar-content .btn-primary {
+.search-bar-content select:autofill,
+.search-bar-content .search-input:autofill {
+    background-color: white !important;
+    color: #5C3A3A !important;
+}
+
+.search-bar-content select:focus,
+.search-bar-content .search-input:focus {
+    outline: none;
+    border-color: #D88C9A;
+    box-shadow: 0 0 0 0.2rem rgba(216, 140, 154, 0.25);
+}
+
+/* Botões Buscar e Limpar */
+.search-bar-content .btn,
+.search-bar-content .btn-primary,
+.search-bar-content .btn-secondary {
     flex: 0 0 auto;
-    width: auto;
-    padding: 12px 20px;
+    padding: 12px 25px;
+    height: 44px;
+    white-space: nowrap;
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: 'Fredoka', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #D88C9A;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar-content .btn-primary,
+.search-bar-content a.btn-secondary {
+    background-color: #D88C9A;
+    color: white;
+}
+
+.search-bar-content .btn-primary:hover,
+.search-bar-content a.btn-secondary:hover {
+    background-color: #c47686;
+}
+
+
+/* ============================================================================
+   EXIBIR (DETALHES) PAGE
+   ============================================================================ */
+
+/* Labels e valores de informações */
+.client-details-label {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #5C3A3A;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.client-details-value {
+    font-size: 1.3rem;
+    color: #5C3A3A;
+    margin-bottom: 15px;
+}
+
+/* Botões de Ações */
+.btn-action {
+    padding: 12px 25px;
+    height: 44px;
+    font-size: 1rem;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     white-space: nowrap;
 }
 
-/* ================= BOTÃO FLUTUANTE (FAB) ================= */
+/* Botão Editar - Rosa */
+.btn-action-editar {
+    background-color: #D88C9A;
+    color: white;
+}
 
-/* FAB no canto inferior direito */
+.btn-action-editar:hover {
+    background-color: #c47686;
+}
+
+/* Botão Voltar - Amarelo manteiga */
+.btn-action-voltar {
+    background-color: #F6E7A1;
+    color: #5C3A3A;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.btn-action-voltar:hover {
+    background-color: #e8d98f;
+}
+
+/* Botão Deletar - Vermelho */
+.btn-action-deletar {
+    background-color: #F44336;
+    color: white;
+}
+
+.btn-action-deletar:hover {
+    background-color: #da190b;
+}
+
+/* Botão Flutuante (FAB) */
 .fab-button {
     position: fixed;
     bottom: 30px;
@@ -514,15 +656,6 @@ textarea.form-control {
 
 .fab-button:active {
     transform: scale(0.95);
-}
-
-/* ================= CADASTRO CLIENTES ================= */
-.divisor{
-    margin: 30px 0;
-    border: none;
-    height: 2px;
-    background-color: #D88C9A;
-    opacity: 0.4;
 }
 
 

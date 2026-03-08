@@ -9,7 +9,7 @@
                     <h3>Editar Cliente</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('clientes.atualizar', $cliente->id) }}" method="POST">
+                    <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
                         @csrf
                         @method('PUT')
 
@@ -23,7 +23,15 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="email">Email *</label>
+                            <label for="data_nascimento">Data de Nascimento</label>
+                            <input type="date" class="form-control @error('data_nascimento') is-invalid @enderror" 
+                                   id="data_nascimento" name="data_nascimento" value="{{ old('data_nascimento', $cliente->data_nascimento) }}">
+                            @error('data_nascimento')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
                             <input type="email" class="form-control @error('email') is-invalid @enderror" 
                                    id="email" name="email" value="{{ old('email', $cliente->email) }}" required>
                             @error('email')

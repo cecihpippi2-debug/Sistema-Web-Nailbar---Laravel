@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClienteController;
 
 //======= HOME =======
 Route::get('/', function () {
@@ -25,19 +26,21 @@ Route::get('/login', function(){
 
 
 //======= Clientes =======
-Route::get('/clientes', function(){
-    return view('clientes.listar_clientes');
-})->name('clientes.index');
+Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.index');
 
-Route::get('/clientes/criar', function(){
-    return view('clientes.criar_clientes');
-})->name('clientes.criar');
+Route::get('/clientes/criar', [ClienteController::class, 'create'])->name('clientes.criar');
 
-Route::get('/clientes/{id}/editar', function($id){
-    return view('clientes.editar_clientes');
-})->name('clientes.editar');
+Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
 
-Route::get('/clientes/{id}', function($id){
-    return view('clientes.exibir_clientes');
-})->name('clientes.exibir');
+Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
+
+Route::post('/clientes/search', [ClienteController::class, 'search'])->name('clientes.search');
+
+Route::get('/clientes/{id}/editar', [ClienteController::class, 'edit'])->name('clientes.editar');
+
+Route::put('/clientes/{id}', [ClienteController::class, 'update'])->name('clientes.update');
+
+Route::get('/clientes/{id}', [ClienteController::class, 'show'])->name('clientes.exibir');
+
+
 
