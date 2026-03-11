@@ -85,7 +85,7 @@
 
                 <div class="login-buttons">
                     <button type="submit" class="btn-primary">Cadastrar</button>
-                    <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Cancelar</a>
+                    <a href="{{ route('clientes.index') }}" class="btn-secondary">Cancelar</a>
                 </div>
             </form>
         </div>

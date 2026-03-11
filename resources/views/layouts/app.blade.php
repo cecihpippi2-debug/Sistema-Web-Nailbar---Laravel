@@ -20,7 +20,7 @@
             <h1>Nail Bar</h1>
             <!-- rotas de navegação-->
             <nav>
-                <a href="{{ route('home') }}">Início</a>
+                <a href="{{ route('login') }}">Login</a>
                 <a href="{{ route('montar') }}">Monte sua unha</a>
                 <a href="{{ route('agendar') }}">Agendamentos</a>
             </nav>

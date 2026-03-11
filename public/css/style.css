@@ -457,7 +457,7 @@ textarea.form-control {
 .btn-info:hover {
     background-color: #0b7dda;
 }
-
+/** Botão editar */
 .btn-warning {
     background-color: #FF9800;
     color: white;
@@ -597,12 +597,12 @@ textarea.form-control {
 
 /* Botão Editar - Rosa */
 .btn-action-editar {
-    background-color: #D88C9A;
+    background-color: #FF9800;
     color: white;
 }
 
 .btn-action-editar:hover {
-    background-color: #c47686;
+    background-color: #f89c64;
 }
 
 /* Botão Voltar - Amarelo manteiga */
@@ -656,6 +656,132 @@ textarea.form-control {
 
 .fab-button:active {
     transform: scale(0.95);
+}
+
+/* ============================================================================
+   AGENDAMENTOS 
+   ============================================================================ */
+   /* ===== SEÇÃO AGENDA ===== */
+
+.agenda-section {
+    padding: 80px 0;
+    background-color: #FFF8E7;
+}
+
+.agenda-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+/* ===== CALENDÁRIO ===== */
+
+.agenda-calendar {
+    background: #F5D0D6;
+    padding: 40px;
+    border-radius: 30px;
+    margin-bottom: 60px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.calendar-nav {
+    background: #D88C9A;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.calendar-day {
+    text-align: center;
+    font-weight: bold;
+}
+
+.calendar-date {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.calendar-date:hover {
+    background: #F6E7A1;
+}
+
+.calendar-date.booked {
+    background: #D88C9A;
+    color: white;
+}
+
+/* ===== CRUD ===== */
+
+.agenda-crud {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+}
+
+.crud-title {
+    margin-bottom: 25px;
+}
+
+.agenda-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.agenda-table th,
+.agenda-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.agenda-table th {
+    background: #F6E7A1;
+}
+
+.btn-edit,
+.btn-delete {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background: #F6E7A1;
+}
+
+.btn-delete {
+    background: #D88C9A;
+    color: white;
+}
+
+.crud-button-area {
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background: #D88C9A;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
 }
 
 
