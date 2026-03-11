@@ -32,6 +32,7 @@
                         </div>
 
                         <div class="form-group mb-3">
+                            <label for="email">Email *</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" 
                                    id="email" name="email" value="{{ old('email', $cliente->email) }}" required>
                             @error('email')

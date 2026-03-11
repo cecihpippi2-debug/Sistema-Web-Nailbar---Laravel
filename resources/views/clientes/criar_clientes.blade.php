@@ -31,11 +31,16 @@
                 </div>
             @endif
 
-            <form action="{{ $action }}" method="POST">
+            <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @if (!empty($cliente->id))
                     @method('PUT')
                 @endif
+
+                <div class="form-group mb-3">
+                    <label for="imagem" class="form-label">Imagem</label>
+                    <input type="file" class="form-control" name="imagem" id="imagem">
+                </div>
 
                 <div class="form-group mb-3">
                     <label for="nome" class="form-label">Nome *</label>
@@ -60,6 +65,15 @@
                 <div class="form-group mb-3">
                     <label for="endereco" class="form-label">Endereço</label>
                     <input type="text" class="form-control" name="endereco" placeholder="Digite seu endereço" value="{{ old('endereco', $cliente->endereco ?? '') }}">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="categoria" class="form-label">Categoria</label>
+                    <select name="categoria" class="form-control mb-3">
+                        <option value="">Selecione sua categoria</option>
+                        <option value="Cliente" {{ old('categoria', $cliente->categoria ?? '') == 'Cliente' ? 'selected' : '' }}>Cliente</option>
+                        <option value="Funcionaria" {{ old('categoria', $cliente->categoria ?? '') == 'Funcionaria' ? 'selected' : '' }}>Funcionária</option>
+                    </select>
                 </div>
 
                 <div class="form-group mb-3">

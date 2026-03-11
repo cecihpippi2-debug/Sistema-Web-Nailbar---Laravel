@@ -21,7 +21,15 @@ class ClienteController extends Controller
     //Salva novo cliente no banco de dados
 
     function store(Request $request) {
-        Cliente::create($request->all());
+        $cliente = Cliente::create($request->all());
+
+        if ($request->hasFile('imagem')){
+            $imagem = $request->file('imagem');
+            $nomeImagem = time() . '_' .$imagem->getClientOriginalName();
+            $imagem->storeAs('public/imagens_clientes', $nomeImagem);
+            $cliente->imagem = 'imagens_clientes/' . $nomeImagem;
+            $cliente->save();
+        }
         return redirect()->route('clientes.index')->with('success', 'Cliente criado com sucesso!');
     }
 

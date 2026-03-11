@@ -17,6 +17,7 @@ class Cliente extends Model
         'telefone',
         'email',
         'endereco',
+        'categoria',
         'observacoes',
     ];
 }

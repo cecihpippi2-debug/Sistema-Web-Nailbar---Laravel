@@ -39,12 +39,30 @@
                                 <label class="client-details-label">Endereço</label>
                                 <p class="client-details-value">{{ $cliente->endereco ?? 'Não informado' }}</p>
                             </div>
+
                             <div class="col-md-6 mb-3">
                                 <label class="client-details-label">Data de Cadastro</label>
                                 <p class="client-details-value">{{ $cliente->created_at?->format('d/m/Y H:i') }}</p>
                             </div>
                         </div>
 
+                                                <div class="row mb-4">
+                            <div class="col-md-6 mb-3">
+                                <label class="client-details-label">Imagem da Cliente</label>
+                                <div class="mt-3">
+                                    @if($cliente->imagem)
+                                        <img src="{{ asset('storage/' . $cliente->imagem) }}"
+                                            alt="Foto da cliente"
+                                            style="width:250px; height:250px; object-fit:cover; border-radius:15px;">
+                                    @else
+                                        <p class="client-details-value">Cliente não possui imagem.</p>
+                                    @endif
+                                </div>
+
+                            </div>
+                        </div>
+
+                        
                         <div class="row mb-4">
                             <div class="col-md-12">
                                 <label class="client-details-label">Observações</label>
