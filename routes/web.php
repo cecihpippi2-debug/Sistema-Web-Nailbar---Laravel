@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\AgendamentoController;
+use App\Http\Controllers\ServicoController;
 
 //======= HOME =======
 Route::get('/', function () {
@@ -14,9 +16,22 @@ Route::get('/montar', function () {
     return view('montar');
 })->name('montar');
 
-Route::get('/agendar', function(){
-    return view('agendar');
-})->name('agendar');
+
+
+//======= Agendamentos =======
+Route::get('/agendamentos', [AgendamentoController::class, 'index'])->name('agendamentos.index');
+
+Route::get('/agendamentos/criar', [AgendamentoController::class, 'create'])->name('agendamentos.criar');
+
+Route::post('/agendamentos', [AgendamentoController::class, 'store'])->name('agendamentos.store');
+
+Route::delete('/agendamentos/{id}', [AgendamentoController::class, 'destroy'])->name('agendamentos.destroy');
+
+Route::post('/agendamentos/search', [AgendamentoController::class, 'search'])->name('agendamentos.search');
+
+Route::get('/agendamentos/{id}/editar', [AgendamentoController::class, 'edit'])->name('agendamentos.editar');
+
+Route::put('/agendamentos/{id}', [AgendamentoController::class, 'update'])->name('agendamentos.update');
 
 
 //======= Login =======

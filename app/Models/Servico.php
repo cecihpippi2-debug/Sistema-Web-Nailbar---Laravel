@@ -9,7 +9,19 @@ class Servico extends Model
 {
     use HasFactory;
 
-    public function agendamentos(){
-    return $this->hasMany(Agendamento::class);
+    protected $table = 'servicos';
+
+    protected $fillable = [
+        'nome',
+        'descricao',
+        'preco',
+        'imagem', 
+        "decoracao_3d",
+        'esmalte_especial',
+    ];
+
+
+
+    //public function agendamentos(){
+    //return $this->hasMany(Agendamento::class);
 } 
-}

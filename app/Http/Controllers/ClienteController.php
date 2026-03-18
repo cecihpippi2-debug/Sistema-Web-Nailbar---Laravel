@@ -20,16 +20,45 @@ class ClienteController extends Controller
 
     //Salva novo cliente no banco de dados
 
-    function store(Request $request) {
-        $cliente = Cliente::create($request->all());
+    function validateRequest(Request $request){
 
-        if ($request->hasFile('imagem')){
+        $request->validate([
+            'nome' => 'required',
+            'data_nascimento' => 'required',
+            'telefone' => 'required',
+            'email' => 'required',
+            'endereco' => 'required',
+            'categoria' => 'required',
+            'imagem'=> 'nullable|file|image|mimes:jpeg,png,jpg',
+            'observacoes' => 'nullable',
+        ], [
+            'nome.required' => 'O campo nome é obrigatório.',
+            'data_nascimento.required' => 'O campo data de nascimento é obrigatório.',
+            'data_nascimento.date' => 'O campo data de nascimento deve ser uma data válida.',
+            'telefone.required' => 'O campo telefone é obrigatório.',
+            'email.required' => 'O campo email é obrigatório.',
+            'endereco.required' => 'O campo endereço é obrigatório.',
+            'categoria.required' => 'O campo categoria é obrigatório.',
+            'imagem.image' => 'O arquivo deve ser uma imagem.',
+            'imagem.mimes' => 'A imagem deve ser do tipo jpeg, png ou jpg.',
+        ]);
+
+    }
+
+    function store(Request $request) {
+
+        $this->validateRequest($request);
+        $data = $request->except('imagem');
+
+        if ($request->hasFile('imagem')) {
             $imagem = $request->file('imagem');
-            $nomeImagem = time() . '_' .$imagem->getClientOriginalName();
-            $imagem->storeAs('public/imagens_clientes', $nomeImagem);
-            $cliente->imagem = 'imagens_clientes/' . $nomeImagem;
-            $cliente->save();
+            $nome_imagem = date('YmdiHs').".".$imagem->getClientOriginalExtension();
+            $diretorio = "images/imagem_clientes/";
+            $imagem->storeAs($diretorio, $nome_imagem, 'public');
+            $data['imagem'] = $diretorio . $nome_imagem;
         }
+
+        Cliente::create($data);
         return redirect()->route('clientes.index')->with('success', 'Cliente criado com sucesso!');
     }
 
@@ -50,8 +79,21 @@ class ClienteController extends Controller
     //Atualiza um cliente no banco de dados
 
     function update(Request $request, $id) {
+
+        $this->validateRequest($request);
         $cliente = Cliente::findOrFail($id);
-        $cliente->update($request->all());
+        $data = $request->except('imagem');
+
+        if ($request->hasFile('imagem')) {
+            $imagem = $request->file('imagem');
+            $nome_imagem = date('YmdiHs').".".$imagem->getClientOriginalExtension();
+            $diretorio = "images/imagem_clientes/";
+            $imagem->storeAs($diretorio, $nome_imagem, 'public');
+
+            $data['imagem'] = $diretorio . $nome_imagem;
+        }
+
+        $cliente->update($data);
         return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso!');
     }
 

@@ -632,15 +632,15 @@ textarea.form-control {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     background-color: #D88C9A;
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     font-weight: bold;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     text-decoration: none;
@@ -784,5 +784,57 @@ textarea.form-control {
     cursor: pointer;
 }
 
+
+/* ============================================================================
+   CRIAR AGENDAMENTO 
+   ============================================================================ */
+.agendamento-section {
+    padding: 60px;
+    background-color: #FFF8E7;
+}
+
+.agendamento-container {
+    background-color: #F5D0D6;
+    padding: 50px;
+    border-radius: 50px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.agendamento-container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.agendamento-content {
+    display: flex;
+    gap: 40px;
+}
+
+/* Calendário */
+#calendar {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+/* Form */
+form {
+    flex: 1;
+}
+
+.form-group label {
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 5px;
+}
 
 

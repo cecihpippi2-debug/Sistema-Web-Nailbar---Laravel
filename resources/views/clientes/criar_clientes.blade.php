@@ -39,7 +39,12 @@
 
                 <div class="form-group mb-3">
                     <label for="imagem" class="form-label">Imagem</label>
-                    <input type="file" class="form-control" name="imagem" id="imagem">
+                    @php
+                        $nome_imagem = !empty($cliente->imagem) ? 'storage/'.$cliente->imagem : 'images\sem_imagem.jpg';
+                    @endphp
+                    <img src="{{ asset('storage/' . $nome_imagem) }}" class="rounded-circle" width="150px" height="150px" alt="imagem">
+                    <input type="file" name="imagem" class="form-control" value="{{ old('imagem', $cliente->imagem ?? '')}}">
+                    
                 </div>
 
                 <div class="form-group mb-3">

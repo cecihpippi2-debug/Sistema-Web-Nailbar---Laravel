@@ -9,9 +9,40 @@
                     <h3>Editar Cliente</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
+                    <form action="{{ route('clientes.update', $cliente->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $erro)
+                                        <li>{{ $erro }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                    <div class="form-group mb-3">
+                        <label for="imagem" class="form-label">Imagem</label>
+
+                        @php
+                            $nome_imagem = !empty($cliente->imagem) ? 'storage/' . $cliente->imagem : 'images\sem_imagem.jpg';
+                        @endphp
+
+                        <div class="mb-2">
+                            <img src="{{ asset('storage/' . $nome_imagem) }}" class="rounded-circle" width="150px" height="150px" style="object-fit: cover;" alt="imagem">
+                        </div>
+
+                        <input type="file" 
+                            name="imagem" 
+                            id="imagem"
+                            class="form-control @error('imagem') is-invalid @enderror">
+
+                        @error('imagem')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
+                    </div>
 
                         <div class="form-group mb-3">
                             <label for="nome">Nome *</label>
@@ -56,6 +87,15 @@
                             @error('endereco')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="categoria" class="form-label">Categoria</label>
+                            <select name="categoria" class="form-control mb-3">
+                                <option value="">Selecione sua categoria</option>
+                                <option value="Cliente" {{ old('categoria', $cliente->categoria ?? '') == 'Cliente' ? 'selected' : '' }}>Cliente</option>
+                                <option value="Funcionaria" {{ old('categoria', $cliente->categoria ?? '') == 'Funcionaria' ? 'selected' : '' }}>Funcionária</option>
+                            </select>
                         </div>
 
                         <div class="form-group mb-3">

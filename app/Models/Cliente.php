@@ -18,6 +18,7 @@ class Cliente extends Model
         'email',
         'endereco',
         'categoria',
+        'imagem', 
         'observacoes',
     ];
 }
