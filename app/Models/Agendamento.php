@@ -14,11 +14,8 @@ class Agendamento extends Model
     protected $fillable = [
         'cliente_id',
         'servico_id',
-        'data_agendamento',
-        'hora_agendamento',
-        'observacoes',
-        'cliente_id', 
-        'servico_id',
+        'data',
+        'hora',
     ];
     
     public function cliente(){

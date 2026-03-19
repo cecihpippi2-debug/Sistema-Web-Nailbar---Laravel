@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nail Bar</title>
-        
-        <!-- Bootstrap CSS -->
+
+        <!-- Bootstrap 5 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
         
         <!-- Fontes Google -->
@@ -16,7 +16,11 @@
 
         <!-- FullCalendar -->
         <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+
+        <!-- Select2 -->
+        <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
     </head>
+
     <body>
 
         <header class="header">
@@ -36,13 +40,35 @@
             <p>© 2026 Nail Bar</p>
         </footer>
 
-        <!-- Bootstrap JS -->
+        <!-- jQuery (select 2) -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- Bootstrap 5 -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- FullCalendar -->
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
-        
+        <!-- Tom Select -->
+        <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>  
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+
+                document.querySelectorAll('.tom-select').forEach(function(el) {
+                    if (!el.tomselect) { // evita duplicação
+                        new TomSelect(el, {
+                            create: false,
+                            placeholder: "Digite para buscar...",
+                            allowEmptyOption: true
+                        });
+                    }
+                });
+
+            });
+        </script>
+
+
     </body>
 </html>
 

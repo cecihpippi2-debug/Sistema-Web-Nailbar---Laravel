@@ -13,16 +13,17 @@ return new class extends Migration
     {
         Schema::create('servicos', function (Blueprint $table) {
 
-    $table->id();
+        $table->id();
 
-    $table->string('nome');
-    $table->text('descricao')->nullable();
-    $table->float('preco');
-    $table->string('imagem')->nullable();
-    $table->boolean('decoracao_3d')->default(false);
-    $table->boolean('esmalte_especial')->default(false);
-  
-    $table->timestamps();
+        $table->string('nome');
+        $table->text('descricao')->nullable();
+        $table->float('preco');
+        $table->string('imagem')->nullable();
+        $table->boolean('decoracao_3d')->default(false);
+        $table->boolean('esmalte_especial')->default(false);
+        $table->string('imagem')->nullable();
+    
+        $table->timestamps();
 });
         //
     }

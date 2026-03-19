@@ -4,29 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Agendamento;
+use App\Models\Servico;
+use App\Models\Cliente;
+
 
 
 class AgendamentoController extends Controller
 {
         function index() {
-        $agendamentos = Agendamento::all();
+        $agendamentos = Agendamento::with(['cliente', 'servico'])->get();
         return view('agendamentos.listar_agendamentos', compact('agendamentos'));
     }
 
     //Mostra formulário para criar novo agendamento
 
-    function create() {
-        return view('agendamentos.criar_agendamentos');
+   
+    public function create() {
+        $clientes = Cliente::all();
+        $servicos = Servico::all();
+
+        return view('agendamentos.criar_agendamentos', compact('clientes', 'servicos'));
     }
 
-    //Salva novo agendamento no banco de dados
-
     function validateRequest(Request $request){
-
         $request->validate([
             'cliente_id' => 'required',
             'servico_id' => 'required',
-            'data' => 'required',
+            'data' => 'required|date',
             'hora' => 'required',
         ], [
             'cliente_id.required' => 'O campo cliente é obrigatório.',
@@ -40,7 +44,13 @@ class AgendamentoController extends Controller
     function store(Request $request) {
 
         $this->validateRequest($request);
-        $data = $request->all();
+        
+        $data = $request->only([
+            'cliente_id',
+            'servico_id',
+            'data',
+            'hora'
+        ]);
 
         Agendamento::create($data);
         return redirect()->route('agendamentos.index')->with('success', 'Agendamento criado com sucesso!');
@@ -57,7 +67,11 @@ class AgendamentoController extends Controller
 
     function edit($id) {
         $agendamento = Agendamento::findOrFail($id);
-        return view('agendamentos.editar_agendamentos', compact('agendamento'));
+
+        $clientes = Cliente::all();
+        $servicos= Servico::all();
+
+        return view('agendamentos.editar_agendamentos', compact('agendamento', 'clientes', 'servicos' ));
     }
 
     //Atualiza um agendamento no banco de dados
@@ -65,8 +79,14 @@ class AgendamentoController extends Controller
     function update(Request $request, $id) {
 
         $this->validateRequest($request);
+
         $agendamento = Agendamento::findOrFail($id);
-        $data = $request->all();
+        $data = $request->only([
+            'cliente_id',
+            'servico_id',
+            'data',
+            'hora'
+        ]);
 
         $agendamento->update($data);
         return redirect()->route('agendamentos.index')->with('success', 'Agendamento atualizado com sucesso!');
@@ -82,12 +102,33 @@ class AgendamentoController extends Controller
     //Busca agendamentos por nome ou email
 
     function search(Request $request) {
-        if(!empty($request->valor)){
-            $agendamentos = Agendamento::where($request->tipo,'like','%'. $request->valor . '%')->get();
-        }else {
-            $agendamentos = Agendamento::all();
+        $valor = $request->valor;
+        $query = Agendamento::with('cliente');
+
+        if (!empty($valor)) {
+            $query->where(function($q) use ($request, $valor) {
+                if ($request->tipo == 'nome') {
+                    $q->whereHas('cliente', function($c) use ($valor) {
+                        $c->where('nome', 'like', '%' . $valor . '%');
+                    });
+                }
+                if ($request->tipo == 'telefone') {
+                    $q->whereHas('cliente', function($c) use ($valor) {
+                        $c->where('telefone', 'like', '%' . $valor . '%');
+                    });
+                }
+                if ($request->tipo == 'data') {
+                    $q->where('data', 'like', '%' . $valor . '%');
+                }
+
+            });
         }
-        return view('agendamentos.listar_agendamentos', ['agendamentos'=>$agendamentos]);
-        
+
+        $agendamentos = $query->get();
+        return view('agendamentos.listar_agendamentos', compact('agendamentos'));
     }
+
+        
+        
 }
+

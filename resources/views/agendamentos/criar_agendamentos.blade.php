@@ -29,7 +29,7 @@
                         dateClick: function(info) {
 
                             // joga a data no input
-                            document.getElementById('dataSelecionada').value = info.dateStr;
+                            document.getElementById('data').value = info.dateStr;
 
                         }
 
@@ -39,35 +39,70 @@
                 });
             </script>
 
-            <!-- FORMULÁRIO -->
-            <form action="#" method="POST">
+            
+            @php 
+            if(!empty($agendamento->id)){
+                $action = route('agendamentos.update', $agendamento->id);
+            } else {
+                $action = route('agendamentos.store');
+            }
+            @endphp
+
+            <div class="login-form">
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                    @if (!empty($agendamento->id))
+                     @method('PUT')
+                @endif
 
                 <div class="form-group mb-3">
-                    <label>Cliente</label>
-                    <select class="form-control">
-                        <option>Selecione um cliente</option>
+                    <label for="cliente_id">Cliente</label>
+                    <select name="cliente_id" id="cliente_id" class="form-control tom-select">
+                        <option value="">Digite ou selecione um cliente</option>
+                        @foreach ($clientes as $cliente)
+                            <option value="{{ $cliente->id }}">
+                                {{ $cliente->nome }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
 
                 <div class="form-group mb-3">
-                    <label>Serviço</label>
-                    <select class="form-control">
-                        <option>Selecione um serviço</option>
+                    <label for="servico_id">Serviço</label>
+                    <select name="servico_id" id="servico_id" class="form-control tom-select">
+                        <option value="">Digite ou selecione um serviço</option>
+                        @foreach ($servicos as $servico)
+                            <option value="{{ $servico->id }}">
+                                {{ $servico->nome }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
 
                 <div class="form-group mb-3">
-                    <label>Data</label>
-                    <input type="text" id="dataSelecionada" class="form-control" readonly>
+                    <label for="data">Data</label>
+                    <input type="text" id="data" name="data" class="form-control"  placeholder="Selecione no calendário...">
                 </div>
 
                 <div class="form-group mb-3">
-                    <label>Horário</label>
-                    <input type="time" class="form-control">
+                    <label for="hora">Horário</label>
+                    <input type="time" id="hora" name="hora" class="form-control">
                 </div>
 
-                <button type="submit" class="btn-primary">Agendar</button>
+                <div class="login-buttons">
+                    <button type="submit" class="btn-primary">Agendar</button>
+                    <a href="{{ route('agendamentos.index') }}" class="btn-secondary">Cancelar</a>
+                </div>
 
             </form>
 

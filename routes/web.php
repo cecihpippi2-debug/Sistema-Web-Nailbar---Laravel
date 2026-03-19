@@ -33,6 +33,9 @@ Route::get('/agendamentos/{id}/editar', [AgendamentoController::class, 'edit'])-
 
 Route::put('/agendamentos/{id}', [AgendamentoController::class, 'update'])->name('agendamentos.update');
 
+Route::get('/agendamentos/{id}', [AgendamentoController::class, 'show'])->name('agendamentos.exibir');
+
+
 
 //======= Login =======
 Route::get('/login', function(){
@@ -58,4 +61,19 @@ Route::put('/clientes/{id}', [ClienteController::class, 'update'])->name('client
 Route::get('/clientes/{id}', [ClienteController::class, 'show'])->name('clientes.exibir');
 
 
+//======= Servicos =======
+Route::get('/servicos', [ServicoController::class, 'index'])->name('servicos.index');
 
+Route::get('/servicos/criar', [ServicoController::class, 'create'])->name('servicos.criar');
+
+Route::post('/servicos', [ServicoController::class, 'store'])->name('servicos.store');
+
+Route::delete('/servicos/{id}', [ServicoController::class, 'destroy'])->name('servicos.destroy');
+
+Route::post('/servicos/search', [ServicoController::class, 'search'])->name('servicos.search');
+
+Route::get('/servicos/{id}/editar', [ServicoController::class, 'editar'])->name('servicos.editar');
+
+Route::put('/servicos/{id}', [ServicoController::class, 'update'])->name('servicos.update');
+
+Route::get('/servicos/{id}', [ServicoController::class, 'show'])->name('servicos.exibir');  

@@ -784,6 +784,71 @@ textarea.form-control {
     cursor: pointer;
 }
 
+/* ============================================================================
+   CALENDÁRIO 
+   ============================================================================ */
+
+/* CARD DO CALENDÁRIO */
+.agenda-calendar {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* TÍTULO DO MÊS */
+.fc-toolbar-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #6b2d3a;
+}
+
+/* BOTÕES */
+.fc-button {
+    background-color: #c97b84 !important;
+    border: none !important;
+    border-radius: 8px !important;
+}
+
+.fc-button:hover {
+    background-color: #a85f67 !important;
+}
+
+/* REMOVE AZUL HORROROSO */
+.fc-col-header-cell-cushion,
+.fc-daygrid-day-number {
+    color: #6b2d3a !important;
+    text-decoration: none !important;
+}
+
+/* DIA SELECIONADO */
+.fc-day-today {
+    background-color: #fdecef !important;
+}
+
+/* EVENTOS - FORÇA TOTAL */
+.fc-event,
+.fc-daygrid-event,
+.fc-event-main {
+    background-color: #D88C9A !important;
+    border: none !important;
+    color: #fff !important;
+}
+
+/* TEXTO DO EVENTO */
+.fc-event-title,
+.fc-event-time {
+    color: #fff !important;
+}
+
+/* REMOVE QUALQUER AZUL PADRÃO */
+.fc-event * {
+    color: #fff !important;
+}
+
+/* HOVER */
+.fc-event:hover {
+    background-color: #4e1f29 !important;
+}
 
 /* ============================================================================
    CRIAR AGENDAMENTO 
@@ -837,4 +902,177 @@ form {
     margin-top: 5px;
 }
 
+.ts-control {
+    border-radius: 20px !important;
+    padding: 10px !important;
+    border: none !important;
+}
+
+.ts-dropdown {
+    border-radius: 20px;
+}
+
+.ts-dropdown .active {
+    background-color: #D88C9A;
+    color: white;
+}
+
+/* BOTÃO FLUTUANTE */
+#chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #c97b84;
+    color: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 999;
+}
+
+/* CAIXA */
+#chat-box {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 260px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    display: none;
+    overflow: hidden;
+    z-index: 999;
+}
+
+/* HEADER */
+.chat-header {
+    background: #6b2d3a;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* BODY */
+.chat-body {
+    padding: 12px;
+    font-size: 14px;
+}
+
+/* ============================================================================
+SERVICOS
+   ============================================================================ */
+
+
+/* FAB CENTRAL */
+.fab-container {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+.fab-criar {
+    background: #8d0d0d;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 18px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.fab-criar:hover {
+    background: #6b0a0a;
+    transform: scale(1.05);
+}
+
+/* ===== SEÇÃO ===== */
+.montar-section {
+    background: #fdf6e3;
+    padding: 40px;
+    text-align: center;
+}
+
+/* ===== TÍTULO ===== */
+.titulo {
+    font-size: 42px;
+    margin-bottom: 30px;
+}
+
+/* ===== FILTROS ===== */
+.filtros {
+    margin-bottom: 30px;
+}
+
+.filtros form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filtros input[type="text"] {
+    padding: 8px;
+    border-radius: 20px;
+    border: none;
+    background: #eee;
+}
+
+.btn-busca {
+    background: #8d0d0d;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+}
+
+/* ===== GRID PINTEREST ===== */
+.grid-servicos {
+    column-count: 6;
+    column-gap: 20px;
+}
+
+.card-servico {
+    background: #f8d7da;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+}
+
+.card-servico img {
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.card-servico .info {
+    margin-top: 10px;
+}
+
+/* ===== BOTÃO ===== */
+.botao-criar {
+    margin-top: 30px;
+}
+
+.btn-criar {
+    background: #8d0d0d;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 20px;
+}
 
