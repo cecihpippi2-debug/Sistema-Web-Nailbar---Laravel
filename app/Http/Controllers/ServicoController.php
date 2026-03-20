@@ -22,7 +22,6 @@ class ServicoController extends Controller
             'nome' => 'required',
             'descricao' => 'required',
             'preco' => 'required',
-            
             'imagem'=> 'nullable|file|image|mimes:jpeg,png,jpg',
         ], [
             'nome.required' => 'O campo nome é obrigatório.',

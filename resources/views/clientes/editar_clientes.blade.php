@@ -27,11 +27,18 @@
                         <label for="imagem" class="form-label">Imagem</label>
 
                         @php
-                            $nome_imagem = !empty($cliente->imagem) ? 'storage/' . $cliente->imagem : 'images\sem_imagem.jpg';
+                            $nome_imagem = !empty($cliente->imagem)
+                                ? $cliente->imagem
+                                : 'images/sem_imagem.jpg';
                         @endphp
-
+                        
                         <div class="mb-2">
-                            <img src="{{ asset('storage/' . $nome_imagem) }}" class="rounded-circle" width="150px" height="150px" style="object-fit: cover;" alt="imagem">
+                            <img src="{{ asset('storage/' . $nome_imagem) }}"
+                                class="rounded-circle"
+                                width="150"
+                                height="150"
+                                style="object-fit: cover;"
+                                alt="imagem">
                         </div>
 
                         <input type="file" 
@@ -47,7 +54,7 @@
                         <div class="form-group mb-3">
                             <label for="nome">Nome *</label>
                             <input type="text" class="form-control @error('nome') is-invalid @enderror" 
-                                   id="nome" name="nome" value="{{ old('nome', $cliente->nome) }}" required>
+                                   id="nome" name="nome" value="{{ old('nome', $cliente->nome) }}" required> <!--old. Mostra os dados antigos para editar -->
                             @error('nome')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror

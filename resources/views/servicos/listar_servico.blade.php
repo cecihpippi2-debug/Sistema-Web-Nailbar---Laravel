@@ -4,7 +4,7 @@
 
 <section class="montar-section">
 
-    <h1 class="titulo">Aqui começa a sua experiência</h1>
+    <h2 class="titulo">Aqui começa a sua experiência!</h2>
 
 <!-- Barra de Pesquisa -->
                         <div class="search-bar mb-4">

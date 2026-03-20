@@ -18,7 +18,7 @@
                         </div>
 
                         <!-- EVENTOS VINDOS DO BACKEND -->
-                        <script>
+                        <script> //jS
                             const eventos = [
                                 @foreach($agendamentos as $ag)
                                 {
@@ -115,8 +115,8 @@
                                 <tr>
                                     <th scope='row'>{{ $agendamento->id}}</th>
                                     <td>{{ $agendamento->cliente->nome ?? ''}}</td>
-                                    <td>{{ $agendamento->data }}</td>
-                                    <td>{{ $agendamento->hora }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($agendamento->data)->format('d/m/Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($agendamento->hora)->format('H:i') }}</td>
                                     <td>{{ $agendamento->cliente->telefone ?? ''}}</td>
                                     <td>
                                         <a href="{{ route('agendamentos.editar', $agendamento->id) }}" class="btn btn-sm btn-warning">Editar</a>

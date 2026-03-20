@@ -8,14 +8,7 @@ use App\Http\Controllers\ServicoController;
 //======= HOME =======
 Route::get('/', function () {
     return view('home');
-}) ->name('home');
-
-
-//======= Sem uso =======
-Route::get('/montar', function () {
-    return view('montar');
-})->name('montar');
-
+}) ->name('home');  
 
 
 //======= Agendamentos =======

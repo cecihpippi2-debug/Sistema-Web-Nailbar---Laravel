@@ -21,7 +21,6 @@ return new class extends Migration
         $table->string('imagem')->nullable();
         $table->boolean('decoracao_3d')->default(false);
         $table->boolean('esmalte_especial')->default(false);
-        $table->string('imagem')->nullable();
     
         $table->timestamps();
 });

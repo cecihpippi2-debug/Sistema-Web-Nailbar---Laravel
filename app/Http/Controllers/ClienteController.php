@@ -20,6 +20,7 @@ class ClienteController extends Controller
 
     //Salva novo cliente no banco de dados
 
+    //Valida os dados do formulário
     function validateRequest(Request $request){
 
         $request->validate([
@@ -53,7 +54,7 @@ class ClienteController extends Controller
         if ($request->hasFile('imagem')) {
             $imagem = $request->file('imagem');
             $nome_imagem = date('YmdiHs').".".$imagem->getClientOriginalExtension();
-            $diretorio = "images/imagem_clientes/";
+            $diretorio = "images/imagem_clientes/"; //Salva em storage/images/imagem_clientes
             $imagem->storeAs($diretorio, $nome_imagem, 'public');
             $data['imagem'] = $diretorio . $nome_imagem;
         }
