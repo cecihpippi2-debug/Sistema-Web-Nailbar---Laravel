@@ -74,6 +74,7 @@ class ClienteController extends Controller
 
     function edit($id) {
         $cliente = Cliente::findOrFail($id);
+        
         return view('clientes.editar_clientes', compact('cliente'));
     }
 

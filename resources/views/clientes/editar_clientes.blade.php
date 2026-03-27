@@ -62,11 +62,14 @@
 
                         <div class="form-group mb-3">
                             <label for="data_nascimento">Data de Nascimento</label>
-                            <input type="date" class="form-control @error('data_nascimento') is-invalid @enderror" 
-                                   id="data_nascimento" name="data_nascimento" value="{{ old('data_nascimento', $cliente->data_nascimento) }}">
-                            @error('data_nascimento')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
+                            <input type="date" 
+                                    class="form-control @error('data_nascimento') is-invalid @enderror"
+                                    name="data_nascimento"
+                                    value="{{ old('data_nascimento', $cliente->data_nascimento?->format('Y-m-d')) }}">
+                                
+                                @error('data_nascimento')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                         </div>
 
                         <div class="form-group mb-3">

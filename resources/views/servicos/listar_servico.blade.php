@@ -7,45 +7,44 @@
     <h2 class="titulo">Aqui começa a sua experiência!</h2>
 
 <!-- Barra de Pesquisa -->
-                        <div class="search-bar mb-4">
-                            <form method="POST" action="{{ route('servicos.search') }}">
-                                @csrf
-                                <label>
-                                    <input type="checkbox" name="decoracao_3d" value="1"
-                                    {{ request('decoracao_3d') ? 'checked' : '' }}>
-                                    decoração 3D
-                                </label>
+    <div class="search-bar mb-4">
+        <form method="POST" action="{{ route('servicos.search') }}">
+            @csrf
+            <label>
+                <input type="checkbox" name="decoracao_3d" value="1"
+                {{ request('decoracao_3d') ? 'checked' : '' }}>
+                decoração 3D
+            </label>
 
-                                <label>
-                                    <input type="checkbox" name="esmalte_especial" value="1"
-                                    {{ request('esmalte_especial') ? 'checked' : '' }}>
-                                    esmalte especial
-                                </label>
+            <label>
+                <input type="checkbox" name="esmalte_especial" value="1"
+                {{ request('esmalte_especial') ? 'checked' : '' }}>
+                esmalte especial
+            </label>
 
-                                <div class="search-bar-content">
-                                    <select class="form-control" name="tipo" required>
-                                        <option value="nome">--</option>
-                                        <option value="nome">Nome</option>
-                                        <option value="preco">Preço</option>
-                                    </select>
-                                    <input type="text" class="form-control search-input" name="valor" placeholder="Pesquisar..." >
-                                    <button type="submit" class="btn btn-primary">Buscar</button>
-                                    <a href="{{ route('servicos.index') }}" class="btn btn-secondary">Limpar</a>
-                                </div>
-                            </form>
-                        </div>
+            <div class="search-bar-content">
+                <select class="form-control" name="tipo" required>
+                    <option value="nome">--</option>
+                    <option value="nome">Nome</option>
+                    <option value="preco">Preço</option>
+                </select>
+                <input type="text" class="form-control search-input" name="valor" placeholder="Pesquisar..." >
+                <button type="submit" class="btn btn-primary">Buscar</button>
+                <a href="{{ route('servicos.index') }}" class="btn btn-secondary">Limpar</a>
+            </div>
+        </form>
+    </div>
 
-    <!-- GRID (PINTEREST STYLE) -->
-    <div class="grid-servicos">
+    <!-- Grid Pinterest -->
+    <div class="grid-servicos">     
 
         @foreach($servicos as $servico)
-
             @php
-                $imagem = !empty($servico->imagem) ? $servico->imagem : 'images/sem_imagem.jpg';
+                $imagem = !empty($servico->imagem) ? $servico->imagem : 'images/sem_imagem.jpg'; 
             @endphp
 
+            <!-- Card do Serviço clicável -->
             <a href="{{ route('servicos.exibir', $servico->id) }}" class="link-card">
-                
                 <div class="card-servico">
                     @php
                         $imagem = !empty($servico->imagem) ? $servico->imagem : 'images/sem_imagem.jpg';
@@ -56,11 +55,9 @@
                         <p>R$ {{ number_format($servico->preco, 2, ',', '.') }}</p>
                     </div>
                 </div>
-
             </a>
 
         @endforeach
-
     </div>
 
 </section>

@@ -7,51 +7,17 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header" style="text-align: center;">
+
+                    <div class="card-header text-center">
                         <h3>Agenda de Atendimentos</h3>
                     </div>
 
                     <div class="card-body">
 
+                        <!-- Calendário -->
                         <div class="agenda-calendar">
                             <div id="calendar"></div>
                         </div>
-
-                        <!-- EVENTOS VINDOS DO BACKEND -->
-                        <script> //jS
-                            const eventos = [
-                                @foreach($agendamentos as $ag)
-                                {
-                                    title: "{{ $ag->cliente->nome }} - {{ $ag->servico->nome }}",
-                                    start: "{{ $ag->data }}T{{ $ag->hora }}",
-                                },
-                                @endforeach
-                            ];
-                        </script>
-
-                        <!-- FULLCALENDAR -->
-                        <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-
-                            var calendarEl = document.getElementById('calendar');
-
-                            var calendar = new FullCalendar.Calendar(calendarEl, {
-
-                                initialView: 'dayGridMonth',
-                                locale: 'pt-br',
-
-                                events: eventos,
-
-                                eventColor: '#c97b84',
-                                eventTextColor: '#fff',
-
-                                height: 600,
-
-                            });
-
-                            calendar.render();
-                        });
-                        </script>
 
                     </div>
                 </div>
@@ -60,7 +26,36 @@
     </div>
 </section>
 
+<!-- Eventos PHP/Controller -> JS -->
+<script>
+    const eventos = @json($eventos); //Transformamos em um array JS
+</script>
 
+<!-- FullCalendar (JS) -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const calendarEl = document.getElementById('calendar'); //Renderiza a div id="calendar""
+
+    const calendar = new FullCalendar.Calendar(calendarEl, { //Cria o calendário
+
+        initialView: 'dayGridMonth',
+        locale: 'pt-br',
+        events: eventos,                                    //Array JS eventos
+        eventColor: '#c97b84',
+        eventTextColor: '#fff',
+        height: 600,
+        eventClick: function(info) {
+            info.jsEvent.preventDefault(); 
+            if (info.event.url) {
+                window.location.href = info.event.url; // direciona para a url do evento
+            }
+        }
+    });
+
+    calendar.render();
+});
+</script>
 
 
 <section>

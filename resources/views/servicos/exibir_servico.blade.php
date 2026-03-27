@@ -48,7 +48,6 @@
                         </div>
 
                         <div class="row mb-4">
-
                             <div class="col-md-6 mb-3">
                                 <label class="client-details-label">Descrição</label>
                                 <p class="client-details-value">
@@ -69,7 +68,15 @@
                                 </div>
 
                             </div>
+                        </div>
 
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="client-details-label">Autora</label>
+                                <p class="client-details-value">
+                                    {{ $servico->cliente->nome ?? 'Não informado' }}
+                                </p>
+                            </div>
                         </div>
 
                         <!-- BOTÕES -->

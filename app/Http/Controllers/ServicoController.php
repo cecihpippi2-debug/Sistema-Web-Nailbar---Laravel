@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Servico;
+use App\Models\Cliente;
 
 class ServicoController extends Controller
 {
@@ -13,7 +14,9 @@ class ServicoController extends Controller
     }
 
     public function create() {
-        return view('servicos.criar_servico');
+        $clientes = Cliente::all();
+
+        return view('servicos.criar_servico', compact('clientes'));
     }
 
     public function validateRequest(Request $request){
@@ -22,6 +25,7 @@ class ServicoController extends Controller
             'nome' => 'required',
             'descricao' => 'required',
             'preco' => 'required',
+            'cliente_id' => 'nullable|exists:clientes,id',
             'imagem'=> 'nullable|file|image|mimes:jpeg,png,jpg',
         ], [
             'nome.required' => 'O campo nome é obrigatório.',
@@ -39,6 +43,8 @@ class ServicoController extends Controller
         $this->validateRequest($request);
 
         $data = $request->except('imagem');
+
+        $data['cliente_id'] = $request->cliente_id ?: null;
     
 
         if ($request->hasFile('imagem')) {
@@ -62,7 +68,10 @@ class ServicoController extends Controller
 
     function editar($id) {
         $servico = Servico::findOrFail($id);
-        return view('servicos.editar_servico', compact('servico'));
+
+        $clientes = Cliente::all();
+
+        return view('servicos.editar_servico', compact('servico', 'clientes'));
     }
 
     public function update(Request $request, $id){

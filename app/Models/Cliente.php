@@ -21,4 +21,19 @@ class Cliente extends Model
         'imagem', 
         'observacoes',
     ];
+
+    protected $casts = [
+        'data_nascimento' => 'date',
+    ];
+
+    // Relacionamento 1 cliente para N agendamento
+    public function agendamentos()
+    {
+        return $this->hasMany(Agendamento::class);
+    }
+    // Relacionamento 1 cliente para N serviços
+    public function servicos()
+    {
+        return $this->hasMany(Servico::class);
+    }
 }

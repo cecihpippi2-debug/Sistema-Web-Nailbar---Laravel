@@ -17,11 +17,18 @@ class Agendamento extends Model
         'data',
         'hora',
     ];
+
+    protected $casts = [
+    'cliente_id' => 'integer',
+    'servico_id' => 'integer',
+    'data' => 'date',
+    ];
     
+    // Relacionamento N agendamento para 1 cliente
     public function cliente(){
         return $this->belongsTo(Cliente::class, 'cliente_id');
     }
-
+    // Relacionamento N agendamento para 1 serviço
     public function servico(){
         return $this->belongsTo(Servico::class, 'servico_id');
     }

@@ -54,17 +54,17 @@
                         </div>
 
                         <!-- DATA -->
-                        <div class="form-group mb-3">
-                            <label for="data">Data</label>
-                            <input type="date" 
-                                class="form-control @error('data') is-invalid @enderror"
-                                name="data"
-                                value="{{ old('data', $agendamento->data) }}">
-                            
-                            @error('data')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
-                        </div>
+                            <div class="form-group mb-3">
+                                <label for="data">Data</label>
+                                <input type="date" 
+                                    class="form-control @error('data') is-invalid @enderror"
+                                    name="data"
+                                    value="{{ old('data', $agendamento->data?->format('Y-m-d')) }}">
+                                
+                                @error('data')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
 
                         <!-- HORA -->
                         <div class="form-group mb-3">

@@ -122,6 +122,19 @@
                             </select>
                         </div>
 
+                        <div class="form-group mb-3">
+                            <label for="cliente_id">Autora</label>
+                            <select name="cliente_id" class="form-control tom-select">
+                                <option value="">Selecione um cliente</option>
+                                @foreach ($clientes as $cliente)
+                                    <option value="{{ $cliente->id }}"
+                                        {{ old('cliente_id', $servico->cliente_id) == $cliente->id ? 'selected' : '' }}>
+                                        {{ $cliente->nome }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <!-- BOTÕES -->
                         <div class="d-flex gap-2">
                             <button type="submit" class="btn btn-success">Atualizar</button>

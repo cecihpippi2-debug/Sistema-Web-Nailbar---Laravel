@@ -27,12 +27,21 @@
             <h1>Nail Bar</h1>
             <!-- rotas de navegação-->
             <nav>
+                <a href="{{ route('home') }}">Home</a>
                 <a href="{{ route('clientes.index') }}">Clientes</a>
                 <a href="{{ route('agendamentos.index') }}">Agendamentos</a>
                 <a href="{{ route('servicos.index') }}">Servicos</a>
 
             </nav>
         </header>
+
+        @if(!request()->routeIs('home'))
+            <div class="container mt-3">
+                <button onclick="history.back()" class="btn-voltar">
+                    <
+                </button>
+            </div>
+        @endif
 
         @yield('conteudo')
 
@@ -51,16 +60,17 @@
 
         <!-- Tom Select -->
         <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>  
-
+        
+        <!-- Script Tom Select -->
         <script>
             document.addEventListener("DOMContentLoaded", function () {
 
-                document.querySelectorAll('.tom-select').forEach(function(el) {
+                document.querySelectorAll('.tom-select').forEach(function(el) { // seleciona tudo com a classe 'tom-select'
                     if (!el.tomselect) { // evita duplicação
                         new TomSelect(el, {
-                            create: false,
+                            create: false, //Não permite criar opções novas
                             placeholder: "Digite para buscar...",
-                            allowEmptyOption: true
+                            allowEmptyOption: true //Opção vazia
                         });
                     }
                 });

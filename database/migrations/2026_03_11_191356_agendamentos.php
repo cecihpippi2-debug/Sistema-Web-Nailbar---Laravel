@@ -13,12 +13,16 @@ return new class extends Migration
     {
         Schema::create('agendamentos', function (Blueprint $table) {
             $table->id();
+            // Chave estrangeira para a tabela clientes
             $table->foreignId('cliente_id')
                 ->constrained()
-                ->onDelete('cascade'); // Chave estrangeira para a tabela clientes
+                ->onDelete('cascade'); 
+                
+            // Chave estrangeira para a tabela servicos
             $table->foreignId('servico_id')
                 ->constrained()
-                ->onDelete('cascade'); // Chave estrangeira para a tabela servicos
+                ->onDelete('cascade'); 
+
             $table->date('data')->nullable();
             $table->time('hora')->nullable();
             $table->timestamps();

@@ -107,6 +107,21 @@
                             </select>
                         </div>
 
+                        <!-- Cliente Tom-Select-->
+                        <div class="form-group mb-3">
+                            <label for="cliente_id">Autora (opcional)</label>
+                            <select name="cliente_id" id="cliente_id" class="form-control tom-select">
+                                <!-- Opção vazia -->
+                                <option value="">Digite ou selecione um cliente</option>
+                                <!-- Passa cada cliente como opção -->
+                                @foreach ($clientes as $cliente)
+                                    <option value="{{ $cliente->id }}">
+                                        {{ $cliente->nome }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <!-- BOTÕES -->
                         <div class="d-flex gap-2">
                             <button type="submit" class="btn btn-success">Cadastrar</button>

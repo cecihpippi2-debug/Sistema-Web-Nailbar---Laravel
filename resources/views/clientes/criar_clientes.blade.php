@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="data_nascimento" class="form-label">Data de Nascimento</label>
+                    <label for="data_nascimento" class="form-label">Data de Nascimento *</label>
                     <input type="date" class="form-control" name="data_nascimento" value="{{ old('data_nascimento', $cliente->data_nascimento ?? '') }}">
                 </div>
 
@@ -63,17 +63,17 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="telefone" class="form-label">Telefone</label>
+                    <label for="telefone" class="form-label">Telefone *</label>
                     <input type="text" class="form-control" name="telefone" placeholder="Digite seu telefone" value="{{ old('telefone', $cliente->telefone ?? '') }}">
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="endereco" class="form-label">Endereço</label>
+                    <label for="endereco" class="form-label">Endereço *</label>
                     <input type="text" class="form-control" name="endereco" placeholder="Digite seu endereço" value="{{ old('endereco', $cliente->endereco ?? '') }}">
                 </div>
 
                 <div class="form-group mb-3">
-                    <label for="categoria" class="form-label">Categoria</label>
+                    <label for="categoria" class="form-label">Categoria *</label>
                     <select name="categoria" class="form-control mb-3">
                         <option value="">Selecione sua categoria</option>
                         <option value="Cliente" {{ old('categoria', $cliente->categoria ?? '') == 'Cliente' ? 'selected' : '' }}>Cliente</option>

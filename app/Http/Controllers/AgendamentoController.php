@@ -6,19 +6,27 @@ use Illuminate\Http\Request;
 use App\Models\Agendamento;
 use App\Models\Servico;
 use App\Models\Cliente;
-
-
+use Carbon\Carbon;
 
 class AgendamentoController extends Controller
 {
-        function index() {
+    function index() {
         $agendamentos = Agendamento::with(['cliente', 'servico'])->get();
-        return view('agendamentos.listar_agendamentos', compact('agendamentos'));
+
+        
+        $eventos = $agendamentos->map(function($ag) {
+            return [
+                'title' => ($ag->cliente->nome ?? '') . ' - ' . ($ag->servico->nome ?? ''),
+                'start' => Carbon::parse($ag->data)->format('Y-m-d') . 'T' . $ag->hora, //Formato FullCalender: 2026-03-24T14:00:00
+                'url'   => route('agendamentos.exibir', $ag->id), //rota para exibir os agendamentos
+            ];
+        });
+
+        return view('agendamentos.listar_agendamentos', compact('agendamentos', 'eventos'));
     }
 
     //Mostra formulário para criar novo agendamento
-
-   
+    
     public function create() {
         $clientes = Cliente::all();
         $servicos = Servico::all();
@@ -60,7 +68,7 @@ class AgendamentoController extends Controller
 
     function show($id) {
         $agendamento = Agendamento::findOrFail($id);
-        return view('agendamentos.exibir_agendamentos', compact('agendamento'));
+        return view('agendamentos.exibir_agendamento', compact('agendamento'));
     }
 
     //Mostra formulário para editar um agendamento 

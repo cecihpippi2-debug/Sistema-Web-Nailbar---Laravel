@@ -186,6 +186,19 @@ textarea.form-control {
     resize: vertical;
     min-height: 120px;
 }
+.btn-voltar {
+    background-color: #c97b84;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    background-color: #a85f67;
+}
 
 
 /* ============================================================================
@@ -280,6 +293,70 @@ textarea.form-control {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
+}
+
+/* CARROSSEL */
+
+.about-section {
+    margin: 80px 0;
+}
+
+.bg-light-custom {
+    background-color: #fff7f8;
+    padding: 40px 0;
+}
+
+/* TÍTULOS */
+.titulo {
+    color: #6b2d3a;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* TEXTO */
+.about-section p {
+    font-size: 1.1em;
+    color: #444;
+}
+
+/* BOTÕES DO CAROUSEL */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #c97b84;
+    border-radius: 50%;
+    padding: 15px;
+}
+
+/* REMOVE FUNDO ESCURO DO HOVER */
+.carousel-control-prev,
+.carousel-control-next {
+    filter: none;
+}
+
+.carousel-custom {
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.carousel-custom img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-espaco {
+    aspect-ratio: 4/4;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.carousel-espaco img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 
