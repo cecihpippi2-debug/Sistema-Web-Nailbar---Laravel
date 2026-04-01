@@ -30,12 +30,6 @@ Route::get('/agendamentos/{id}', [AgendamentoController::class, 'show'])->name('
 
 
 
-//======= Login =======
-Route::get('/login', function(){
-    return view('login');
-})->name('login');
-
-
 //======= Clientes =======
 Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.index');
 

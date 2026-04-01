@@ -28,13 +28,10 @@ return [
             ]),
 
             'descricao' => $this->faker->sentence(),
-
             'preco' => $this->faker->randomFloat(2, 30, 150),
-
             'decoracao_3d' => $this->faker->boolean(),
-
             'esmalte_especial' => $this->faker->boolean(),
-
+            'cliente_id' => \App\Models\Cliente::factory(),
             'imagem' => null,
 
             'created_at' => now(),

@@ -35,14 +35,14 @@
                             <div class="col-md-6">
                                 <label class="client-details-label">Data</label>
                                 <p class="client-details-value">
-                                    {{ \Carbon\Carbon::parse($agendamento->data)->format('d/m/Y') }}
+                                    {{ $agendamento->data->format('d/m/Y') }}
                                 </p>
                             </div>
 
                             <div class="col-md-6">
                                 <label class="client-details-label">Horário</label>
                                 <p class="client-details-value">
-                                    {{ \Carbon\Carbon::parse($agendamento->hora)->format('H:i') }}
+                                    {{ $agendamento->hora }}
                                 </p>
                             </div>
                         </div>

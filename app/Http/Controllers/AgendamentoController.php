@@ -71,7 +71,7 @@ class AgendamentoController extends Controller
         return view('agendamentos.exibir_agendamento', compact('agendamento'));
     }
 
-    //Mostra formulário para editar um agendamento 
+    //Mostra form para editar um agendamento 
 
     function edit($id) {
         $agendamento = Agendamento::findOrFail($id);
@@ -82,7 +82,7 @@ class AgendamentoController extends Controller
         return view('agendamentos.editar_agendamentos', compact('agendamento', 'clientes', 'servicos' ));
     }
 
-    //Atualiza um agendamento no banco de dados
+    //Atualiza um agendamento no banco 
 
     function update(Request $request, $id) {
 
@@ -100,7 +100,7 @@ class AgendamentoController extends Controller
         return redirect()->route('agendamentos.index')->with('success', 'Agendamento atualizado com sucesso!');
     }
 
-    //Deleta um agendamento do banco de dados
+    //Deleta um agendamento do banco 
 
     function destroy($id) {
         Agendamento::findOrFail($id)->delete();

@@ -19,6 +19,7 @@ class ClienteFactory extends Factory
         return [
             'nome' => $this->faker->name,
             'email' => $this->faker->Email,
+            'data_nascimento' => $this->faker->date(),
             'telefone' => $this->faker->phoneNumber(),
             'endereco' => $this->faker->address(),
             'categoria' => 'Cliente',

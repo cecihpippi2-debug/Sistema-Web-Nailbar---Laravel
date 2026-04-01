@@ -19,7 +19,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="client-details-label">Data de Nascimento</label>
-                                <p class="client-details-value">{{ $cliente->data_nascimento}}</p>
+                                <p class="client-details-value">{{ $cliente->data_nascimento->format('d/m/Y') }}</p>
                             </div>
                         </div>
 
