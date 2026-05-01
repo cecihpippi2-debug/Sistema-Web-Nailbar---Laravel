@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AgendamentoController;
 use App\Http\Controllers\ServicoController;
+use App\Http\Controllers\CategoriaEstoqueController;
+use App\Http\Controllers\EstoqueController;
 
 //======= HOME =======
 Route::get('/', function () {
@@ -64,3 +66,15 @@ Route::get('/servicos/{id}/editar', [ServicoController::class, 'editar'])->name(
 Route::put('/servicos/{id}', [ServicoController::class, 'update'])->name('servicos.update');
 
 Route::get('/servicos/{id}', [ServicoController::class, 'show'])->name('servicos.exibir');  
+
+
+//======= CategoriaEstoque =======
+Route::get('categorias/chart', [CategoriaEstoqueController::class, 'chart'])->name('categorias.chart');
+Route::post('categorias/search', [CategoriaEstoqueController::class, 'search'])->name('categorias.search');
+Route::resource('categorias', CategoriaEstoqueController::class);
+
+//======= Estoque =======
+Route::get('categorias/{categoria}/estoque', [EstoqueController::class, 'index'])->name('categorias.estoque');
+Route::post('categorias/{categoria}/estoque/search', [EstoqueController::class, 'search'])->name('estoque.search');
+Route::resource('estoque', EstoqueController::class);
+

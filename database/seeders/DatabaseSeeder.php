@@ -6,7 +6,8 @@ use Illuminate\Database\Seeder;
 use App\Models\Cliente;
 use App\Models\Servico;
 use App\Models\Agendamento;
-
+use App\Models\Estoque;
+use App\Models\CategoriaEstoque;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +20,8 @@ class DatabaseSeeder extends Seeder
             ClientesSeeder::class,
             ServicosSeeder::class,
             AgendamentosSeeder::class,
+            CategoriaEstoqueSeeder::class,
+            EstoqueSeeder::class,
         ]);
     }
 }

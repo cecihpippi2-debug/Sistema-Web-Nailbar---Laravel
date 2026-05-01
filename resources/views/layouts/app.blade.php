@@ -31,6 +31,7 @@
                 <a href="{{ route('clientes.index') }}">Clientes</a>
                 <a href="{{ route('agendamentos.index') }}">Agendamentos</a>
                 <a href="{{ route('servicos.index') }}">Servicos</a>
+                <a href="{{ route('categorias.index') }}">Estoque</a>
 
             </nav>
         </header>
@@ -78,6 +79,10 @@
             });
         </script>
 
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        @if (isset($grafico))
+            {!! $grafico->script() !!}
+        @endif
 
     </body>
 </html>
