@@ -7,13 +7,17 @@ use App\Models\Agendamento;
 use App\Models\Servico;
 use App\Models\Cliente;
 use Carbon\Carbon;
+use App\Charts\AgendamentosPorMesChart;
+
 
 class AgendamentoController extends Controller
 {
-    function index() {
-        $agendamentos = Agendamento::with(['cliente', 'servico'])->get();
-
+    function index(AgendamentosPorMesChart $chart) {
         
+        $agendamentos = Agendamento::with(['cliente', 'servico'])->get();
+        $grafico = $chart->build();
+
+        // Formatação para o FullCalendar
         $eventos = $agendamentos->map(function($ag) {
             return [
                 'title' => ($ag->cliente->nome ?? '') . ' - ' . ($ag->servico->nome ?? ''),
@@ -22,7 +26,7 @@ class AgendamentoController extends Controller
             ];
         });
 
-        return view('agendamentos.listar_agendamentos', compact('agendamentos', 'eventos'));
+        return view('agendamentos.listar_agendamentos', compact('agendamentos', 'eventos', 'grafico'));
     }
 
     //Mostra formulário para criar novo agendamento

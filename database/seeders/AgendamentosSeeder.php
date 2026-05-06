@@ -13,6 +13,6 @@ class AgendamentosSeeder extends Seeder
      */
     public function run(): void
     {
-        Agendamento::factory()->count(3)->create();
+        Agendamento::factory()->count(20)->create();
     }
 }

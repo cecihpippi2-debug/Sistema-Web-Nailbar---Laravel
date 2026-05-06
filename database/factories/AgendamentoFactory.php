@@ -21,7 +21,7 @@ class AgendamentoFactory extends Factory
         return [
             'cliente_id' => (Cliente::All()->random())->id,
             'servico_id' => (Servico::All()->random())->id,
-            'data' => $this->faker->date(),
+            'data' => $this->faker->dateTimeBetween('2026-01-01', '2026-12-31'),
             'hora' => $this->faker->time(),
             'created_at' => now(),
             'updated_at' => now(),
