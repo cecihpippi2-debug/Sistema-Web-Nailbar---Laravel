@@ -8,6 +8,8 @@ use App\Models\Servico;
 use App\Models\Cliente;
 use Carbon\Carbon;
 use App\Charts\AgendamentosPorMesChart;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 
 class AgendamentoController extends Controller

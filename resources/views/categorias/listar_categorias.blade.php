@@ -69,12 +69,13 @@
                             </tbody>
                         </table>
 
+                        <!-- Gráfico -->
                         <div class="card mt-4">
                             <div class="card-header">
                                 <h4>Produtos por Categoria</h4>
                             </div>
                             <div class="card-body">
-                                {!! $grafico->container() !!}
+                                {!! $grafico->container() !!} 
                             </div>
                         </div>
 
@@ -89,6 +90,10 @@
 <!-- FAB -->
 <a href="{{ route('categorias.create') }}" class="fab-button" title="Nova Categoria">
     <span>+</span>
+</a>
+<!-- Botão PDF -->
+<a href="{{ route('categorias.relatorio') }}" class="fab-relatorio" title="Fazer download do relatório">
+    <span>📄</span>
 </a>
 
 @endsection

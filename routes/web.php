@@ -10,8 +10,13 @@ use App\Http\Controllers\EstoqueController;
 //======= HOME =======
 Route::get('/', function () {
     return view('home');
-}) ->name('home');  
+})->name('home');
 
+//======= Relatórios =======
+Route::get('categorias/relatorio', [CategoriaEstoqueController::class, 'relatorio'])
+    ->name('categorias.relatorio');
+Route::get('clientes/relatorio', [ClienteController::class, 'relatorio'])
+    ->name('clientes.relatorio');
 
 //======= Agendamentos =======
 Route::get('/agendamentos', [AgendamentoController::class, 'index'])->name('agendamentos.index');
@@ -65,8 +70,7 @@ Route::get('/servicos/{id}/editar', [ServicoController::class, 'editar'])->name(
 
 Route::put('/servicos/{id}', [ServicoController::class, 'update'])->name('servicos.update');
 
-Route::get('/servicos/{id}', [ServicoController::class, 'show'])->name('servicos.exibir');  
-
+Route::get('/servicos/{id}', [ServicoController::class, 'show'])->name('servicos.exibir');
 
 //======= CategoriaEstoque =======
 Route::get('categorias/chart', [CategoriaEstoqueController::class, 'chart'])->name('categorias.chart');
@@ -77,4 +81,3 @@ Route::resource('categorias', CategoriaEstoqueController::class);
 Route::get('categorias/{categoria}/estoque', [EstoqueController::class, 'index'])->name('categorias.estoque');
 Route::post('categorias/{categoria}/estoque/search', [EstoqueController::class, 'search'])->name('estoque.search');
 Route::resource('estoque', EstoqueController::class);
-

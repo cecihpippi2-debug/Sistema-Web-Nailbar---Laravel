@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CategoriaEstoque;
 use App\Charts\ProdutosPorCategoriaChart;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CategoriaEstoqueController extends Controller
 {
@@ -82,6 +83,18 @@ class CategoriaEstoqueController extends Controller
         'categorias' => $categorias,
         'grafico' => $grafico
     ]);
+    }
+
+    public function relatorio(){
+
+        $categorias = CategoriaEstoque::with('estoques')->get();
+        $titulo = 'Relatório de Categorias e produtos do estoque';
+        $pdf = Pdf::loadView('categorias.relatorio', [
+        'categorias' => $categorias,
+        'titulo' => $titulo
+    ]);
+
+    return $pdf->download('relatorio_categorias.pdf');
     }
 
 }

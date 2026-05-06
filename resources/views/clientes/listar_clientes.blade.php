@@ -2,7 +2,7 @@
 
 @section('conteudo')
 <section>
-        <div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -11,10 +11,10 @@
                     </div>
                     <div class="card-body">
                         @if(session('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ session('success') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            </div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
                         @endif
 
                         <!-- Barra de Pesquisa -->
@@ -77,6 +77,10 @@
 <!-- FAB -->
 <a href="{{ route('clientes.criar') }}" class="fab-button" title="Novo Cliente">
     <span>+</span>
+</a>
+<!-- Botão PDF -->
+<a href="{{ url('clientes/relatorio') }}" class="fab-relatorio" title="Fazer download do relatório">
+    <span>📄</span>
 </a>
 
 @endsection

@@ -725,6 +725,26 @@ textarea.form-control {
     z-index: 1000;
 }
 
+.fab-relatorio {
+    position: fixed;
+    bottom: 120px; /* sobe ele acima do principal */
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background-color: #6C9BD2; /* cor diferente pra diferenciar */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
 .fab-button:hover {
     background-color: #c56f7f;
     transform: scale(1.1);
