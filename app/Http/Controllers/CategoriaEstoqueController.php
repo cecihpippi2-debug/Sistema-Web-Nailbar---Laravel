@@ -69,17 +69,19 @@ class CategoriaEstoqueController extends Controller
             ->with('success', 'CategoriaEstoque deletada com sucesso!');
     }
 
-    public function search(Request $request) {
-
+    public function search(Request $request, ProdutosPorCategoriaChart $chart) {
     $query = CategoriaEstoque::withCount('estoques');
-
     if (!empty($request->valor)) {
         $query->where($request->tipo, 'like', '%' . $request->valor . '%');
     }
 
     $categorias = $query->get();
+    $grafico = $chart->build();
 
-    return view('categorias.listar_categorias', compact('categorias'));
+    return view('categorias.listar_categorias', [
+        'categorias' => $categorias,
+        'grafico' => $grafico
+    ]);
     }
 
 }
