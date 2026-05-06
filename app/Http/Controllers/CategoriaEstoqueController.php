@@ -7,7 +7,7 @@ use App\Models\CategoriaEstoque;
 use App\Charts\ProdutosPorCategoriaChart;
 use Barryvdh\DomPDF\Facade\Pdf;
 
-class CategoriaEstoqueController extends Controller
+class   CategoriaEstoqueController extends Controller
 {
     function index(ProdutosPorCategoriaChart $chart) {
         $categorias = CategoriaEstoque::all();
