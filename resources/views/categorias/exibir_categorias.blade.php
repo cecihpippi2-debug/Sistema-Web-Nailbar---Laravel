@@ -66,7 +66,6 @@
 
                         <!-- Botões de Ações -->
                         <div class="d-flex gap-2 mt-4">
-                            <a href="{{ route('clientes.index') }}" class="btn-action btn-action-voltar">Voltar</a>
                             <a href="{{ route('clientes.editar', $cliente->id) }}" class="btn-action btn-action-editar">Editar</a>
                             <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" style="display:inline;">
                                 @csrf

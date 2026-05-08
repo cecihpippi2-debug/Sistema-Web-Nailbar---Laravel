@@ -64,7 +64,15 @@ class   CategoriaEstoqueController extends Controller
     }
 
     function destroy($id) {
-        CategoriaEstoque::findOrFail($id)->delete();
+        $categoria = CategoriaEstoque::findOrFail($id);
+
+        // Impede que uma categoria com produtos cadastrados seja deletada
+        if ($categoria->estoques()->count() > 0){
+            return redirect()->route('categorias.index')
+                ->with('error', 'Não é possível deletar a categoria, pois existem produtos cadastrados nela.');
+        }
+
+        $categoria->delete();
 
         return redirect()->route('categorias.index')
             ->with('success', 'CategoriaEstoque deletada com sucesso!');

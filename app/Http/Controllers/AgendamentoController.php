@@ -115,31 +115,52 @@ class AgendamentoController extends Controller
 
     //Busca agendamentos por nome ou email
 
-    function search(Request $request) {
+    function search(Request $request, AgendamentosPorMesChart $chart) {
         $valor = $request->valor;
         $query = Agendamento::with('cliente');
 
         if (!empty($valor)) {
             $query->where(function($q) use ($request, $valor) {
+                
+                // Pesquisa por nome do cliente
                 if ($request->tipo == 'nome') {
                     $q->whereHas('cliente', function($c) use ($valor) {
                         $c->where('nome', 'like', '%' . $valor . '%');
                     });
                 }
+                // Pesquisa por telefone do cliente
                 if ($request->tipo == 'telefone') {
                     $q->whereHas('cliente', function($c) use ($valor) {
                         $c->where('telefone', 'like', '%' . $valor . '%');
                     });
                 }
+                // Pesquisa por data do agendamento
                 if ($request->tipo == 'data') {
                     $q->where('data', 'like', '%' . $valor . '%');
                 }
 
             });
         }
-
         $agendamentos = $query->get();
-        return view('agendamentos.listar_agendamentos', compact('agendamentos'));
+         // Eventos do FullCalendar
+            $eventos = $agendamentos->map(function($ag) {
+
+                return [
+                    'title' => ($ag->cliente->nome ?? '') . ' - ' . ($ag->servico->nome ?? ''),
+                    'start' => Carbon::parse($ag->data)->format('Y-m-d') . 'T' . $ag->hora,
+                    'url'   => route('agendamentos.exibir', $ag->id),
+                ];
+
+            });
+
+            // Gráfico
+            $grafico = $chart->build();
+
+            return view('agendamentos.listar_agendamentos', compact(
+                'agendamentos',
+                'eventos',
+                'grafico'
+            ));
     }
 
         

@@ -25,7 +25,7 @@
 <body>
 
 <h3>{{ $titulo }}</h3>
-<img src="{{ storage_path('app/public/sem_imagem.png') }}" width="100">
+<img src="{{ storage_path('app/public/images/sem_imagem.jpg') }}" width="300">
 
 @foreach ($categorias as $categoria)
 

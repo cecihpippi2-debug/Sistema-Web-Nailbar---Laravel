@@ -78,6 +78,7 @@ Route::post('categorias/search', [CategoriaEstoqueController::class, 'search'])-
 Route::resource('categorias', CategoriaEstoqueController::class);
 
 //======= Estoque =======
+// /categorias/3/estoque
 Route::get('categorias/{categoria}/estoque', [EstoqueController::class, 'index'])->name('categorias.estoque');
 Route::post('categorias/{categoria}/estoque/search', [EstoqueController::class, 'search'])->name('estoque.search');
 Route::resource('estoque', EstoqueController::class);

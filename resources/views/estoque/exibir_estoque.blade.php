@@ -58,7 +58,6 @@
 
                         <!-- BOTÕES -->
                         <div class="d-flex gap-2 mt-4">
-                            <a href="{{ route('estoque.index') }}" class="btn-action btn-action-voltar">Voltar</a>
 
                             <a href="{{ route('estoque.edit', $estoque->id) }}" class="btn-action btn-action-editar">
                                 Editar

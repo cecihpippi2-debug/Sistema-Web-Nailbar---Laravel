@@ -25,6 +25,8 @@
 <body>
 
 <h3>{{ $titulo }}</h3>
+<img src="{{ storage_path('app\public\images\imagem_servicos\20260319382138.jpg') }}" width="200">
+
 
 <table>
     <thead>
