@@ -17,6 +17,7 @@ class ProdutosPorCategoriaChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
+        
         $produtosPorCategoria = DB::table('estoque')
             ->join('categorias', 'categorias.id', '=', 'estoque.categoria_id')
             ->select('categorias.nome', DB::raw('count(1) as qtd_produtos'))
